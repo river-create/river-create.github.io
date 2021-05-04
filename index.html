@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>River</title>
+<meta charset="utf-8">
+<a href="https://river-write.glitch.me/about.html"><h3>River</h3></a>
+</head>
+<style>
+div.a{
+font-size: 16px;
+overflow: scroll;
+font-family: 'Didot';
+margin: auto;
+width: 50%;
+height: 450px;
+outline: none;
+Line-height: 1.5;
+}
+div.sticky{
+  margin: auto;
+  width: 50%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 40px;
+  background-color: rgba(255,255,255,0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+}
+button{
+  Height: 100%;;
+  cursor: pointer;
+  Background-color: white;
+  Border-radius: 5px;
+  Color: black;
+  Border: 1px solid lightgrey;
+}
+Button:active{
+  Background-color: #2b8bff !important;
+  Color: white;
+  Border: 1px solid transparent;
+}
+Button:hover{
+Background-color: #ededed;
+}
+.superscript{
+Position: relative;
+Top: 1px;
+Font-size: 13px;
+}
+.subscript{
+Position: relative;
+Top: -1px;
+Font-size: 14px;
+}
+Select{
+  Height: 100%;;
+  cursor: pointer;
+  Background-color: white;
+  Border-radius: 5px;
+  Color: black;
+  Border: 1px solid lightgrey
+}
+h3{
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    color: #002270;
+    letter-spacing: 5px;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+  }
+</style>
+<script>
+window.onbeforeunload = function() {
+   return "Leave page? Changes you made may not be saved.";
+}
+window.onload = function() {
+  alert("Some features might not work in some browsers, so if something doesn't work, switch your browser!");
+}
+function download(){
+  if (document.getElementById("ext").value == ".html") {
+    var head = prompt("What do you want to name your document?","Artemis Fowl");
+    var text = document.getElementById("story").innerHTML;
+    text = "<html><style>body{margin:auto; width:50%; padding:30px; font-family:georgia; line-height:1.5;}</style><body><h1>"+head+"</h1><div>"+text+"</div></body></html>"
+    text = text.replace(/\n/g, "<br>");
+    var blob = new Blob([text], {type: "text/plain"});
+    var anchor = document.createElement("a");
+    head = head.replace(/ /g,"_")
+    anchor.download = head.concat(".html");
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.target ="_blank";
+    anchor.style.display = "none";
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  } else {
+        var head = prompt("What do you want to name your document?","Artemis Fowl");
+    var text = document.getElementById("story").innerHTML;
+    text = head+"\n\n"+text;
+    var blob = new Blob([text], {type: "text/plain"});
+    var anchor = document.createElement("a");
+    head = head.replace(/ /g,"_")
+    anchor.download = head.concat(".txt");
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.target ="_blank";
+    anchor.style.display = "none";
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+ }
+function focus() {
+  document.getElementById("story").focus();
+}
+function fontEditor(fontName) {
+    document.execCommand("fontName", false, fontName);
+}
+function updatefullsize() {
+  document.getElementById('story').style.fontSize = document.getElementById('font_size').value.concat("px");
+}
+function setWidth() {
+  document.getElementById("story").style.width = document.getElementById("width").value.concat("%");
+}
+function setDefault() {
+  document.getElementById("story").style.width = '50%';
+  document.getElementById("story").style.fontFamily = 'Didot';
+  document.getElementById("story").style.fontSize = '16px';
+  document.getElementById("font_name").value = 'Didot';
+  document.getElementById("font_size").value = 16;
+  document.getElementById("ext").value = '.html';
+}
+
+</script>
+<body onclick="focus()">
+<br>
+<br>
+<br>
+<div class="sticky">
+<button onclick="document.execCommand('bold',false,null);"><b>Bold</b></button>
+<button onclick="document.execCommand('italic',false,null);"><i>Italic</i></button>
+<button onclick="document.execCommand('underline',false,null);"><u>Underline</u></button>
+<button onclick="document.execCommand('strikethrough',false,null);"><s>Strikethrough</s></button>
+<button onclick="document.execCommand('superscript',false,null);">Superscript</button>
+<button onclick="document.execCommand('subscript',false,null);">Subscript</button>
+<select id="font_name" onchange="fontEditor(this[this.selectedIndex].value); document.getElementById('story').style.fontName = document.getElementById('nameoffont').value">
+    <option class="option" value="Didot" style="font-family: Didot;">Didot</option>
+    <option class="option" value="Georgia" style="font-family:Georgia;">Georgia</option>
+    <option class="option" value="Arial" style="font-family:Arial;">Arial</option>
+    <option class="option" value="Calibri" style="font-family:Calibri;">Calibri</option>
+    <option class="option" value="Comic Sans MS" style="font-family:Comic Sans MS;">Comic Sans MS</option>
+    <option class="option" value="Verdana" style="font-family:Verdana;">Verdana</option>
+    <option class="option" value="Helvetica" style="font-family:Helvetica;">Helvetica</option>
+    <option class="option" value="Tahoma" style="font-family:Tahoma;">Tahoma</option>
+    <option class="option" value="Trebuchet MS" style="font-family:Trebuchet MS;">Trebuchet MS</option>
+    <option class="option" value="Times New Roman" style="font-family:Times New Roman;">Times New Roman</option>
+    <option class="option" value="Garamond" style="font-family:Garamond;">Garamond</option>
+    <option class="option" value="Courier New" style="font-family:Courier New;">Courier New</option>
+    <option class="option" value="Brush Script MT" style="font-family:Brush Script MT;">Brush Script MT</option>
+    <option class="option" value="Impact" style="font-family: Impact;">Impact</option>
+    <option class="option" value="American Typewriter" style="font-family:American Typewriter;">American Typewriter</option>
+    <option class="option" value="Andalé Mono" style="font-family:Andalé Mono;">Andalé Mono</option>
+    <option class="option" value="Courier" style="font-family: Courier;">Courier</option>
+    <option class="option" value="Lucida Console" style="font-family:Lucida Console;">Lucida Console</option>
+    <option class="option" value="Monaco" style="font-family:Monaco;">Monaco</option>
+    <option class="option" value="Bradley Hand" style="font-family:Bradley Hand;">Bradley Hand</option>
+    <option class="option" value="Luminari" style="font-family: Luminari;">Luminari</option>
+</select>
+  <button> <div style="display: inline-block" onclick="download()">Save as </div>
+  <select id="ext" style="display: inline-block">
+    <option>.html</option>
+    <option>.txt</option>
+  </select>
+  </button>
+  <p style="display: inline-block; font-family: arial; font-size: 12px;">Size: <input onchange="updatefullsize()" style="border-radius:5px; border:1px solid #f7f7f7; outline: none; width:40px;" type="number" id="font_size" min="1" cols="2" max="500" value="16"></p>
+  <p style="display: inline-block; font-family: arial; font-size: 12px;">Page width: <input style="border-radius:5px; border:1px solid #f7f7f7; outline: none; width:40px;" type="number" value="50" min="10" max="100" onchange="setWidth()" id="width">%</p>
+<select id="more">
+  <option>more...</option>
+  <option class="option" onclick="alert('*Use simple language\n*At least write down your basic storyline on paper, it helps!\n*Try not repeating the same adjective or adverb more than twice in the same para\n*Use sensible/appropriate adverbs and adjectives. e.g “He thought furiously” does not make any sense.');document.getElementById('more').value = 'more...';">Writing tips...</option>
+  <option onclick="setDefault();document.getElementById('more').value = 'more...';">Set all values to default</option>
+</select>
+</div>
+  <div contenteditable="true" class="a" id="story"><span>Once upon a time...</span></div>
+</body>
+</html>
