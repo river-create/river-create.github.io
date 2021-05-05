@@ -3,7 +3,7 @@
 <head>
 <title>River</title>
 <meta charset="utf-8">
-<a href="https://river-create.github.io/home"><h3>River</h3></a>
+<a style="user-select: none;" href="https://river-write.glitch.me/about.html"><h3>River</h3></a>
 </head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@400;700&family=Dancing+Script:wght@400;700&family=Itim&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Shadows+Into+Light&display=swap');
@@ -73,7 +73,6 @@ h3{
     position: absolute;
     left: 20px;
     top: 0px;
-    user-select: none;
   }
 </style>
 <script>
@@ -85,10 +84,9 @@ window.onload = function() {
 }
 function download(){
   if (document.getElementById("ext").value == ".html") {
-    var font = document.getElementById('font_name').value;
     var head = prompt("What do you want to name your document?","Artemis Fowl");
     var text = document.getElementById("story").innerHTML;
-    text = "<html><style>@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@400;700&family=Dancing+Script:wght@400;700&family=Itim&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Shadows+Into+Light&display=swap');body{margin:auto; width:50%; padding:30px; font-family: "+font+"; line-height:1.5;}</style><body><h1>"+head+"</h1><div>"+text+"</div></body></html>";
+    text = "<html><style>body{margin:auto; width:50%; padding:30px; font-family:georgia; line-height:1.5;}</style><body><h1>"+head+"</h1><div>"+text+"</div></body></html>"
     text = text.replace(/\n/g, "<br>");
     var blob = new Blob([text], {type: "text/plain"});
     var anchor = document.createElement("a");
@@ -99,7 +97,7 @@ function download(){
     anchor.style.display = "none";
     document.body.appendChild(anchor);
     anchor.click();
-    document.body.removeChild(anchor);'
+    document.body.removeChild(anchor);
   } else {
         var head = prompt("What do you want to name your document?","Artemis Fowl");
     var text = document.getElementById("story").innerHTML;
@@ -149,8 +147,8 @@ function setDefault() {
 <button onclick="document.execCommand('strikethrough',false,null);"><s>Strikethrough</s></button>
 <button onclick="document.execCommand('superscript',false,null);">Superscript</button>
 <button onclick="document.execCommand('subscript',false,null);">Subscript</button>
-<select id="font_name" onchange="fontEditor(this[this.selectedIndex].value); document.getElementById('story').style.fontName = document.getElementById('font_name').value">
-    <option class="option" value="Didot" style="font-family:Didot;">Didot</option>
+<select id="font_name" onchange="fontEditor(this[this.selectedIndex].value); document.getElementById('story').style.fontName = document.getElementById('nameoffont').value">
+     <option class="option" value="Didot" style="font-family:Didot;">Didot</option>
     <option class="option" value="'Itim', cursive" style="font-family:'Itim', cursive;">Itim</option>    
     <option class="option" value="Georgia" style="font-family:Georgia;">Georgia</option>
     <option class="option" value="Arial" style="font-family:Arial;">Arial</option>
