@@ -79,9 +79,6 @@ h3{
 window.onbeforeunload = function() {
    return "Leave page? Changes you made may not be saved.";
 }
-window.onload = function() {
-  alert("Some features might not work in some browsers, so if something doesn't work, switch your browser!");
-}
 function download(){
   if (document.getElementById("ext").value == ".html") {
     var head = prompt("What do you want to name your document?","Artemis Fowl");
