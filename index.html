@@ -10,7 +10,7 @@
 div.a{
   font-size: 16px;
   overflow: scroll;
-  font-family: 'Didot';
+  font-family: 'Times New Roman',serif;
   margin: auto;
   width: 50%;
   height: 450px;
@@ -152,6 +152,7 @@ function setDefault() {
 <button onclick="document.execCommand('justifyRight',false,null);">Right</button>
 <button onclick="document.execCommand('justifyLeft',false,null);">Left</button>
 <select id="font_name" onchange="fontEditor(this[this.selectedIndex].value); document.getElementById('story').style.fontName = document.getElementById('nameoffont').value">
+    <option class="option" value="'Times New Roman',serif" style="font-family: 'Times New Roman',serif;">Times New Roman</option>
     <option class="option" value="Didot" style="font-family:Didot;">Didot</option>
     <option class="option" value="'Itim', cursive" style="font-family:'Itim', cursive;">Itim</option>    
     <option class="option" value="Georgia" style="font-family:Georgia;">Georgia</option>
